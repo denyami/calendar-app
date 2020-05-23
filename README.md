@@ -12,6 +12,8 @@ docker-laravel$ docker exec -it php bash
 (docker) $ composer require laravel/ui
 (docker) $ php artisan ui vue
 (docker) $ npm install
+(docker) $ php artisan ui vue --auth
+(docker) $ npm install
 ```
 
 #change in project/.env
@@ -24,5 +26,14 @@ DB_DATABASE=database
 DB_USERNAME=docker
 DB_PASSWORD=docker
 
+```
+#migrate
+```
+(docker) $ php artisan migrate
+```
+
+#instance vue component
+```
+npm run dev
 ```
 
