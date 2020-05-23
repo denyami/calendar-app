@@ -1941,6 +1941,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -1958,17 +1976,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  el: '#calendar',
   data: function data() {
-    var weeks = ['Sun', 'Man', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
-    var startDate = new Date(year, month - 1, 1);
-    var endDate = new Date(year, month, 0);
-    var endDayCount = endDate.getDate();
+    var endDate = new Date(year, month, 0).getDate();
+
+    var dateList = _toConsumableArray(Array(endDate).keys()).map(function (i) {
+      return ++i;
+    });
+
+    var monthList = [];
+    var weekList = [];
+
+    var _iterator = _createForOfIteratorHelper(dateList),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var dt = _step.value;
+        weekList.push(dt);
+
+        if (dt % 7 == 0) {
+          monthList.push(weekList);
+          weekList = [];
+        }
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+
+    monthList.push(weekList);
     return {
-      calendar: ['Day', weeks, date, year, month, startDate, endDate, endDayCount]
-    };
+      calendar: monthList //calendar: dateList
+
+    }; //const weeks = ['Sun','Man','Tue','Wed','Thu','Fri','Sat']
+    //const date = new Date()
+    //const year = date.getFullYear()
+    //const month = date.getMonth() + 1
+    //const startDate = new Date(year, month -1, 1)
+    //const endDate = new Date(year, month, 0)
+    //const endDayCount = endDate.getDate()
+    //return{
+    //    calendar: ['Day',weeks, date, year, month, startDate, endDate, endDayCount]
+    //}
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -37574,10 +37628,19 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Calendar")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.calendar) +
-                "\n                "
+            _c(
+              "table",
+              { attrs: { border: "1" } },
+              _vm._l(_vm.calendar, function(oneweek) {
+                return _c(
+                  "tr",
+                  _vm._l(oneweek, function(oneday) {
+                    return _c("td", [_vm._v(_vm._s(oneday))])
+                  }),
+                  0
+                )
+              }),
+              0
             )
           ])
         ])
@@ -49911,15 +49974,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/components/calendar/Calendar.vue ***!
   \*******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Calendar_vue_vue_type_template_id_dd802e58___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Calendar.vue?vue&type=template&id=dd802e58& */ "./resources/js/components/calendar/Calendar.vue?vue&type=template&id=dd802e58&");
 /* harmony import */ var _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Calendar.vue?vue&type=script&lang=js& */ "./resources/js/components/calendar/Calendar.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -49949,7 +50011,7 @@ component.options.__file = "resources/js/components/calendar/Calendar.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/calendar/Calendar.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
