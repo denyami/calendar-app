@@ -1975,20 +1975,32 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   el: '#calendar',
   data: function data() {
     var date = new Date();
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
-    var endDate = new Date(year, month, 0).getDate();
+    var startDate = new Date(year, month - 1, 1);
+    var endDate = new Date(year, month, 0);
+    var endDateCount = endDate.getDate();
+    var startDay = startDate.getDay();
 
-    var dateList = _toConsumableArray(Array(endDate).keys()).map(function (i) {
+    var dateList = _toConsumableArray(Array(endDateCount).keys()).map(function (i) {
       return ++i;
     });
 
     var monthList = [];
     var weekList = [];
+    var dayCount = 0;
+    var beforeMonthDay = [];
+    var daylist = ['日', '月', '火', '水', '木', '金', '土'];
+    monthList.push(daylist);
+
+    for (var step = 0; step < startDay; step++) {
+      dateList.unshift(0);
+    }
 
     var _iterator = _createForOfIteratorHelper(dateList),
         _step;
@@ -1996,9 +2008,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done;) {
         var dt = _step.value;
+        dayCount++;
         weekList.push(dt);
 
-        if (dt % 7 == 0) {
+        if (dayCount % 7 == 0) {
           monthList.push(weekList);
           weekList = [];
         }
@@ -2011,8 +2024,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     monthList.push(weekList);
     return {
-      calendar: monthList //calendar: dateList
-
+      calendar: monthList
     }; //const weeks = ['Sun','Man','Tue','Wed','Thu','Fri','Sat']
     //const date = new Date()
     //const year = date.getFullYear()
@@ -37628,6 +37640,11 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Calendar")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.calendar) +
+                "\n                    "
+            ),
             _c(
               "table",
               { attrs: { border: "1" } },
