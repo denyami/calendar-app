@@ -6,9 +6,10 @@
                     <div class="card-header">Calendar</div>
 
                     <div class="card-body">
-                        {{calendar}}
+                        {{year}}年
+                        {{month}}月
                         <table border="1">
-                            <tr v-for="oneweek in calendar">
+                            <tr v-for="oneweek in Month">
                                 <td v-for="oneday in oneweek">{{oneday}}</td>
                             </tr>
                         </table>
@@ -59,7 +60,9 @@
             monthList.push(weekList)
 
             return {
-                calendar: monthList
+                Month: monthList,
+                year: year,
+                month: month
             }
         },
         mounted() {

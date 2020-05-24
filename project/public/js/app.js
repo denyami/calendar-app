@@ -1976,6 +1976,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   el: '#calendar',
   data: function data() {
@@ -2031,7 +2032,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     monthList.push(weekList);
     return {
-      calendar: monthList
+      Month: monthList,
+      year: year,
+      month: month
     };
   },
   mounted: function mounted() {
@@ -37640,13 +37643,15 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _vm._v(
               "\n                    " +
-                _vm._s(_vm.calendar) +
-                "\n                    "
+                _vm._s(_vm.year) +
+                "年\n                    " +
+                _vm._s(_vm.month) +
+                "月\n                    "
             ),
             _c(
               "table",
               { attrs: { border: "1" } },
-              _vm._l(_vm.calendar, function(oneweek) {
+              _vm._l(_vm.Month, function(oneweek) {
                 return _c(
                   "tr",
                   _vm._l(oneweek, function(oneday) {
