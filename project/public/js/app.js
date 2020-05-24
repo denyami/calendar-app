@@ -1977,10 +1977,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   el: '#calendar',
   data: function data() {
     var date = new Date();
+    var setMonthCount = 0;
+    date.setMonth(date.getMonth() + setMonthCount);
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     var startDate = new Date(year, month - 1, 1);
@@ -2034,8 +2040,82 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return {
       Month: monthList,
       year: year,
-      month: month
+      month: month,
+      date: date,
+      setMonthCount: setMonthCount
     };
+  },
+  methods: {
+    changeMonth: function changeMonth(valueChangeMonth) {
+      changeMonthCount += valueChangeMonth;
+      var setMonthCount = changeMonthCount;
+      {
+        var date = new Date();
+        date.setMonth(date.getMonth() + setMonthCount);
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var startDate = new Date(year, month - 1, 1);
+        var endDate = new Date(year, month, 0);
+        var endDateCount = endDate.getDate();
+        var startDay = startDate.getDay();
+        var endDay = endDate.getDay();
+
+        var dateList = _toConsumableArray(Array(endDateCount).keys()).map(function (i) {
+          return ++i;
+        });
+
+        var lastMonthEndDate = new Date(year, month - 1, 0);
+        var lastMonthEndDateCount = lastMonthEndDate.getDate();
+        var monthList = [];
+        var weekList = [];
+        var dayCount = 0;
+        var beforeMonthDay = [];
+        var daylist = ['日', '月', '火', '水', '木', '金', '土'];
+        monthList.push(daylist);
+
+        for (var _step3 = 0; _step3 < startDay; _step3++) {
+          dateList.unshift(lastMonthEndDateCount - _step3);
+        }
+
+        for (var step = 1; step < 7 - endDay; step++) {
+          dateList.push(step);
+        }
+
+        var _iterator2 = _createForOfIteratorHelper(dateList),
+            _step4;
+
+        try {
+          for (_iterator2.s(); !(_step4 = _iterator2.n()).done;) {
+            var dt = _step4.value;
+            dayCount++;
+            weekList.push(dt);
+
+            if (dayCount % 7 == 0) {
+              monthList.push(weekList);
+              weekList = [];
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+
+        monthList.push(weekList);
+        this.$set(this, "Month", monthList);
+        this.$set(this, "year", year);
+        this.$set(this, "month", month);
+        this.$set(this, "date", date);
+        console.log(changeMonthCount);
+        return {
+          Month: monthList,
+          year: year,
+          month: month,
+          date: date,
+          setMonthCount: setMonthCount
+        };
+      }
+    }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -37646,8 +37726,34 @@ var render = function() {
                 _vm._s(_vm.year) +
                 "年\n                    " +
                 _vm._s(_vm.month) +
-                "月\n                    "
+                "月\n                    " +
+                _vm._s(_vm.date) +
+                "\n                    "
             ),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.changeMonth(-1)
+                  }
+                }
+              },
+              [_vm._v("Back")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.changeMonth(1)
+                  }
+                }
+              },
+              [_vm._v("Next")]
+            ),
+            _vm._v(" "),
             _c(
               "table",
               { attrs: { border: "1" } },
