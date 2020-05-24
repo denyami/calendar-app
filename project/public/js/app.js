@@ -1986,11 +1986,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var endDate = new Date(year, month, 0);
     var endDateCount = endDate.getDate();
     var startDay = startDate.getDay();
+    var endDay = endDate.getDay();
 
     var dateList = _toConsumableArray(Array(endDateCount).keys()).map(function (i) {
       return ++i;
     });
 
+    var lastMonthEndDate = new Date(year, month - 1, 0);
+    var lastMonthEndDateCount = lastMonthEndDate.getDate();
     var monthList = [];
     var weekList = [];
     var dayCount = 0;
@@ -1998,16 +2001,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var daylist = ['日', '月', '火', '水', '木', '金', '土'];
     monthList.push(daylist);
 
-    for (var step = 0; step < startDay; step++) {
-      dateList.unshift(0);
+    for (var _step = 0; _step < startDay; _step++) {
+      dateList.unshift(lastMonthEndDateCount - _step);
+    }
+
+    for (var step = 1; step < 7 - endDay; step++) {
+      dateList.push(step);
     }
 
     var _iterator = _createForOfIteratorHelper(dateList),
-        _step;
+        _step2;
 
     try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var dt = _step.value;
+      for (_iterator.s(); !(_step2 = _iterator.n()).done;) {
+        var dt = _step2.value;
         dayCount++;
         weekList.push(dt);
 
@@ -2025,16 +2032,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     monthList.push(weekList);
     return {
       calendar: monthList
-    }; //const weeks = ['Sun','Man','Tue','Wed','Thu','Fri','Sat']
-    //const date = new Date()
-    //const year = date.getFullYear()
-    //const month = date.getMonth() + 1
-    //const startDate = new Date(year, month -1, 1)
-    //const endDate = new Date(year, month, 0)
-    //const endDayCount = endDate.getDate()
-    //return{
-    //    calendar: ['Day',weeks, date, year, month, startDate, endDate, endDayCount]
-    //}
+    };
   },
   mounted: function mounted() {
     console.log('Component mounted.');

@@ -30,7 +30,10 @@
             const endDate = new Date(year,month, 0)
             const endDateCount = endDate.getDate()
             const startDay = startDate.getDay()
+            const endDay = endDate.getDay()
             const dateList = [...Array(endDateCount).keys()].map(i => ++i)
+            const lastMonthEndDate = new Date(year, month -1, 0)
+            const lastMonthEndDateCount = lastMonthEndDate.getDate()
             var monthList = []
             var weekList = []
             var dayCount = 0
@@ -39,8 +42,12 @@
             
             monthList.push(daylist)
             for (let step = 0; step < startDay; step++){
-                dateList.unshift(0)
+                dateList.unshift(lastMonthEndDateCount - step)
             }
+            for (var step = 1; step < 7 - endDay; step++){
+                dateList.push(step)
+            }
+
             for (var dt of dateList){
                 dayCount++;
                 weekList.push(dt)
@@ -54,19 +61,6 @@
             return {
                 calendar: monthList
             }
-
-
-
-            //const weeks = ['Sun','Man','Tue','Wed','Thu','Fri','Sat']
-            //const date = new Date()
-            //const year = date.getFullYear()
-            //const month = date.getMonth() + 1
-            //const startDate = new Date(year, month -1, 1)
-            //const endDate = new Date(year, month, 0)
-            //const endDayCount = endDate.getDate()
-            //return{
-            //    calendar: ['Day',weeks, date, year, month, startDate, endDate, endDayCount]
-            //}
         },
         mounted() {
             console.log('Component mounted.')
