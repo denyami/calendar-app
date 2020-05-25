@@ -120,10 +120,10 @@
                     
                     monthList.push(daylist)
                     for (let step = 0; step < startDay; step++){
-                        dateList.unshift(lastMonthEndDateCount - step)
+                        dateList.unshift('前'+String((lastMonthEndDateCount - step)))
                     }
                     for (var step = 1; step < 7 - endDay; step++){
-                        dateList.push(step)
+                        dateList.push('次'+String(step))
                     }
 
                     for (var dt of dateList){
