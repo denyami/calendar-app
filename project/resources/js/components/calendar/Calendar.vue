@@ -9,7 +9,7 @@
                             <input type="hidden" name="_token" :value="csrf">
                             <input type="hidden" name="name" :value="userName">
                             <input type="hidden" name="id" :value="userId">
-                            <input type="submit" value="送信">
+                            <input type="submit" value="予定">
                         </form>
                     <div class="card-body">
                         {{year}}年
@@ -18,10 +18,24 @@
                             <tr v-for="oneweek in monthList">
                                 <td v-for="oneday in oneweek">
                                     <a href="/" id="today" v-if="month==todaysMonth+1 && oneday==todaysDate">{{oneday}}
+                                        <form action="/send" method="post">
+                                            <input type="hidden" name="_token" :value="csrf">
+                                            <input type="hidden" name="name" :value="userName">
+                                            <input type="hidden" name="id" :value="userId">
+                                            <input type="hidden" name="dateData" :value="oneday">
+                                            <input type="submit" value="予定">
+                                        </form>
                                     </a href="/">
                                     <a href="/" id="day" v-else-if="daylist.includes(oneday)">{{oneday}}
                                     </a href="/">
                                     <a href="/" v-else>{{oneday}}
+                                    <form action="/send" method="post">
+                                        <input type="hidden" name="_token" :value="csrf">
+                                        <input type="hidden" name="name" :value="userName">
+                                        <input type="hidden" name="id" :value="userId">
+                                        <input type="hidden" name="dateData" :value="oneday">
+                                        <input type="submit" value="予定">
+                                    </form>
                                     </a href="/">
                                 </td>
                             </tr>
