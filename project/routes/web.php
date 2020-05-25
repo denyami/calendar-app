@@ -14,13 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/calendar','CalendarController@index');
+Route::get('/create','PlansController@create');
+Route::get('/plan','PlansController@index');
+
+Route::post('/plan','PlansController@store');
 
 Route::post('/send','CalendarController@send');
 Route::get('/result','CalendarController@result');
+
+Route::resource('plans', 'PlansController');
 
 Auth::routes();
 

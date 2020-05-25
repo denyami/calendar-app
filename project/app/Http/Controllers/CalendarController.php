@@ -20,7 +20,7 @@ class CalendarController extends Controller
       $name = $request->name;
       $id = $request->id;
       $dateData = $request->dateData;
-      return view('result',compact('name','id','dateData'));
+      return view('send',compact('name','id','dateData'));
     }
 
 }
