@@ -1994,8 +1994,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    userName: String,
+    csrf: String
+  },
   el: '#calendar',
   data: function data() {
     this.changeMonth(0);
@@ -2010,7 +2021,8 @@ var changeMonthCount = 0;
       today: this.getToday().todaysYear,
       todaysYear: this.getToday().todaysYear,
       todaysMonth: this.getToday().todaysMonth,
-      todaysDate: this.getToday().todaysDate
+      todaysDate: this.getToday().todaysDate,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
   methods: {
@@ -38345,6 +38357,29 @@ var render = function() {
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [_vm._v("Calendar")]),
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.userName) +
+              "さんのカレンダー\n                    "
+          ),
+          _c("form", { attrs: { action: "/send", method: "post" } }, [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrf }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: {
+                type: "hidden",
+                name: "_token",
+                value: "CRLphOQGs5Ewd7fykg0HgVdmqtZS1PK6p1lYpisV"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "text", name: "name" } }),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "submit", value: "送信" } })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _vm._v(

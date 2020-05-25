@@ -4,6 +4,13 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Calendar</div>
+                        {{userName}}さんのカレンダー
+                        <form action="/send" method="post">
+                            <input type="hidden" name="_token" :value="csrf">
+                            <input type="hidden" name="_token" value="CRLphOQGs5Ewd7fykg0HgVdmqtZS1PK6p1lYpisV">
+                            <input type="text" name="name">
+                            <input type="submit" value="送信">
+                        </form>
                     <div class="card-body">
                         {{year}}年
                         {{month}}月
@@ -40,6 +47,10 @@
 <script>
     var changeMonthCount = 0
     export default {
+        props: {
+            userName: String,
+            csrf: String
+        },
         el: '#calendar',
         data: function() {
             this.changeMonth(0)
@@ -54,7 +65,8 @@
                 today:this.getToday().todaysYear,
                 todaysYear:this.getToday().todaysYear,
                 todaysMonth:this.getToday().todaysMonth,
-                todaysDate:this.getToday().todaysDate
+                todaysDate:this.getToday().todaysDate,
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },
         methods: {
