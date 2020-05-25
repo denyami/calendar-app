@@ -15,4 +15,10 @@ class CalendarController extends Controller
     {
         return view('calendar');
     }
+
+    public function send(Request $request){
+      $output = $request->name;
+      return view('result',compact('output'));
+    }
+
 }

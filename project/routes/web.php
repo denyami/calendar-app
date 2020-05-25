@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Route::get('/calendar','CalendarController@index');
 
+Route::post('/send','CalendarController@send');
+Route::get('/result','CalendarController@result');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
