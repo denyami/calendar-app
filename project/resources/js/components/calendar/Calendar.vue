@@ -7,8 +7,8 @@
                         {{userName}}さんのカレンダー
                         <form action="/send" method="post">
                             <input type="hidden" name="_token" :value="csrf">
-                            <input type="hidden" name="_token" value="CRLphOQGs5Ewd7fykg0HgVdmqtZS1PK6p1lYpisV">
-                            <input type="text" name="name">
+                            <input type="hidden" name="name" :value="userName">
+                            <input type="hidden" name="id" :value="userId">
                             <input type="submit" value="送信">
                         </form>
                     <div class="card-body">
@@ -49,7 +49,7 @@
     export default {
         props: {
             userName: String,
-            csrf: String
+            userId: String
         },
         el: '#calendar',
         data: function() {

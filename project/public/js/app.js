@@ -2005,7 +2005,7 @@ var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     userName: String,
-    csrf: String
+    userId: String
   },
   el: '#calendar',
   data: function data() {
@@ -38369,14 +38369,14 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("input", {
-              attrs: {
-                type: "hidden",
-                name: "_token",
-                value: "CRLphOQGs5Ewd7fykg0HgVdmqtZS1PK6p1lYpisV"
-              }
+              attrs: { type: "hidden", name: "name" },
+              domProps: { value: _vm.userName }
             }),
             _vm._v(" "),
-            _c("input", { attrs: { type: "text", name: "name" } }),
+            _c("input", {
+              attrs: { type: "hidden", name: "id" },
+              domProps: { value: _vm.userId }
+            }),
             _vm._v(" "),
             _c("input", { attrs: { type: "submit", value: "送信" } })
           ]),

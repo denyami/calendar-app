@@ -17,8 +17,9 @@ class CalendarController extends Controller
     }
 
     public function send(Request $request){
-      $output = $request->name;
-      return view('result',compact('output'));
+      $name = $request->name;
+      $id = $request->id;
+      return view('result',compact('name','id'));
     }
 
 }
