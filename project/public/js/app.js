@@ -1984,65 +1984,13 @@ var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   el: '#calendar',
   data: function data() {
-    var date = new Date();
-    var setMonthCount = 0;
-    date.setMonth(date.getMonth() + setMonthCount);
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var startDate = new Date(year, month - 1, 1);
-    var endDate = new Date(year, month, 0);
-    var endDateCount = endDate.getDate();
-    var startDay = startDate.getDay();
-    var endDay = endDate.getDay();
-
-    var dateList = _toConsumableArray(Array(endDateCount).keys()).map(function (i) {
-      return ++i;
-    });
-
-    var lastMonthEndDate = new Date(year, month - 1, 0);
-    var lastMonthEndDateCount = lastMonthEndDate.getDate();
-    var monthList = [];
-    var weekList = [];
-    var dayCount = 0;
-    var beforeMonthDay = [];
-    var daylist = ['日', '月', '火', '水', '木', '金', '土'];
-    monthList.push(daylist);
-
-    for (var _step = 0; _step < startDay; _step++) {
-      dateList.unshift(lastMonthEndDateCount - _step);
-    }
-
-    for (var step = 1; step < 7 - endDay; step++) {
-      dateList.push(step);
-    }
-
-    var _iterator = _createForOfIteratorHelper(dateList),
-        _step2;
-
-    try {
-      for (_iterator.s(); !(_step2 = _iterator.n()).done;) {
-        var dt = _step2.value;
-        dayCount++;
-        weekList.push(dt);
-
-        if (dayCount % 7 == 0) {
-          monthList.push(weekList);
-          weekList = [];
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-
-    monthList.push(weekList);
+    this.changeMonth(0);
     return {
-      Month: monthList,
-      year: year,
-      month: month,
-      date: date,
-      setMonthCount: setMonthCount
+      Month: this.changeMonth(0).monthList,
+      year: this.changeMonth(0).year,
+      month: this.changeMonth(0).month,
+      date: this.changeMonth(0).date,
+      setMonthCount: this.changeMonth(0).setMonthCount
     };
   },
   methods: {
@@ -2073,20 +2021,20 @@ var changeMonthCount = 0;
         var daylist = ['日', '月', '火', '水', '木', '金', '土'];
         monthList.push(daylist);
 
-        for (var _step3 = 0; _step3 < startDay; _step3++) {
-          dateList.unshift(lastMonthEndDateCount - _step3);
+        for (var _step = 0; _step < startDay; _step++) {
+          dateList.unshift(lastMonthEndDateCount - _step);
         }
 
         for (var step = 1; step < 7 - endDay; step++) {
           dateList.push(step);
         }
 
-        var _iterator2 = _createForOfIteratorHelper(dateList),
-            _step4;
+        var _iterator = _createForOfIteratorHelper(dateList),
+            _step2;
 
         try {
-          for (_iterator2.s(); !(_step4 = _iterator2.n()).done;) {
-            var dt = _step4.value;
+          for (_iterator.s(); !(_step2 = _iterator.n()).done;) {
+            var dt = _step2.value;
             dayCount++;
             weekList.push(dt);
 
@@ -2096,9 +2044,9 @@ var changeMonthCount = 0;
             }
           }
         } catch (err) {
-          _iterator2.e(err);
+          _iterator.e(err);
         } finally {
-          _iterator2.f();
+          _iterator.f();
         }
 
         monthList.push(weekList);
@@ -2108,7 +2056,7 @@ var changeMonthCount = 0;
         this.$set(this, "date", date);
         console.log(changeMonthCount);
         return {
-          Month: monthList,
+          monthList: monthList,
           year: year,
           month: month,
           date: date,

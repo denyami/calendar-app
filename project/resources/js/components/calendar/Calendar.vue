@@ -28,49 +28,13 @@
     export default {
         el: '#calendar',
         data: function() {
-            var date = new Date();
-            var setMonthCount = 0
-            date.setMonth(date.getMonth() + setMonthCount)
-            const year = date.getFullYear()
-            const month = date.getMonth()+1
-            const startDate = new Date(year,month-1, 1)
-            const endDate = new Date(year,month, 0)
-            const endDateCount = endDate.getDate()
-            const startDay = startDate.getDay()
-            const endDay = endDate.getDay()
-            const dateList = [...Array(endDateCount).keys()].map(i => ++i)
-            const lastMonthEndDate = new Date(year, month -1, 0)
-            const lastMonthEndDateCount = lastMonthEndDate.getDate()
-            var monthList = []
-            var weekList = []
-            var dayCount = 0
-            var beforeMonthDay = []
-            var daylist = ['日', '月', '火', '水', '木', '金', '土']
-            
-            monthList.push(daylist)
-            for (let step = 0; step < startDay; step++){
-                dateList.unshift(lastMonthEndDateCount - step)
-            }
-            for (var step = 1; step < 7 - endDay; step++){
-                dateList.push(step)
-            }
-
-            for (var dt of dateList){
-                dayCount++;
-                weekList.push(dt)
-                if (dayCount%7==0){
-                    monthList.push(weekList)
-                    weekList = []
-                }
-            }
-            monthList.push(weekList)
-
-            return {
-                Month: monthList,
-                year: year,
-                month: month,
-                date: date,
-                setMonthCount:setMonthCount
+            this.changeMonth(0)
+            return{
+                Month: this.changeMonth(0).monthList,
+                year: this.changeMonth(0).year,
+                month: this.changeMonth(0).month,
+                date: this.changeMonth(0).date,
+                setMonthCount: this.changeMonth(0).setMonthCount
             }
         },
         methods: {
@@ -119,11 +83,11 @@
                     this.$set(this,"date",date)
                     console.log(changeMonthCount)
                     return {
-                        Month: monthList,
-                        year: year,
-                        month: month,
-                        date: date,
-                        setMonthCount:setMonthCount
+                        monthList,
+                        year,
+                        month,
+                        date,
+                        setMonthCount
                     }
                 }
               }
