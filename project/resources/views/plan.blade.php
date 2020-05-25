@@ -6,15 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <a href="/calendar">こちらがカレンダーです</a>
-
+                   <h4>{{$plan->id}}</h4>
+                   <h4>{{$plan->todo}}</h4>
                 </div>
             </div>
         </div>

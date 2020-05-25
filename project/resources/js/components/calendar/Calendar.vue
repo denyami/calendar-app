@@ -5,43 +5,37 @@
                 <div class="card">
                     <div class="card-header">Calendar</div>
                         {{userName}}さんのカレンダー
-                        <form action="/send" method="post">
-                            <input type="hidden" name="_token" :value="csrf">
-                            <input type="hidden" name="name" :value="userName">
-                            <input type="hidden" name="id" :value="userId">
-                            <input type="submit" value="予定">
-                        </form>
                     <div class="card-body">
                         {{year}}年
                         {{month}}月
+                        <button v-on:click="changeMonth(-1)">Back</button>
+                        <button v-on:click="changeMonth(1)">Next</button>
                         <table border="1">
                             <tr v-for="oneweek in monthList">
                                 <td v-for="oneday in oneweek">
-                                    <a href="/" id="today" v-if="month==todaysMonth+1 && oneday==todaysDate">{{oneday}}
+                                    <a href="/plan" id="today" v-if="month==todaysMonth+1 && oneday==todaysDate">{{oneday}}
                                         <form action="/send" method="post">
                                             <input type="hidden" name="_token" :value="csrf">
                                             <input type="hidden" name="name" :value="userName">
                                             <input type="hidden" name="id" :value="userId">
                                             <input type="hidden" name="dateData" :value="oneday">
-                                            <input type="submit" value="予定">
+                                            <input type="submit" value="追加">
                                         </form>
-                                    </a href="/">
-                                    <a href="/" id="day" v-else-if="daylist.includes(oneday)">{{oneday}}
-                                    </a href="/">
-                                    <a href="/" v-else>{{oneday}}
+                                    </a">
+                                    <a href="/plan" id="day" v-else-if="daylist.includes(oneday)">{{oneday}}
+                                    </a>
+                                    <a href="/plan" v-else>{{oneday}}
                                     <form action="/send" method="post">
                                         <input type="hidden" name="_token" :value="csrf">
                                         <input type="hidden" name="name" :value="userName">
                                         <input type="hidden" name="id" :value="userId">
                                         <input type="hidden" name="dateData" :value="oneday">
-                                        <input type="submit" value="予定">
+                                        <input type="submit" value="追加">
                                     </form>
-                                    </a href="/">
+                                    </a">
                                 </td>
                             </tr>
                         </table>
-                        <button v-on:click="changeMonth(-1)">Back</button>
-                        <button v-on:click="changeMonth(1)">Next</button>
                     </div>
                 </div>
             </div>

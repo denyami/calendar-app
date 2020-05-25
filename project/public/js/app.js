@@ -2009,12 +2009,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
 var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -38374,27 +38368,8 @@ var render = function() {
           _vm._v(
             "\n                    " +
               _vm._s(_vm.userName) +
-              "さんのカレンダー\n                    "
+              "さんのカレンダー\n                "
           ),
-          _c("form", { attrs: { action: "/send", method: "post" } }, [
-            _c("input", {
-              attrs: { type: "hidden", name: "_token" },
-              domProps: { value: _vm.csrf }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "hidden", name: "name" },
-              domProps: { value: _vm.userName }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              attrs: { type: "hidden", name: "id" },
-              domProps: { value: _vm.userId }
-            }),
-            _vm._v(" "),
-            _c("input", { attrs: { type: "submit", value: "予定" } })
-          ]),
-          _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _vm._v(
               "\n                    " +
@@ -38403,6 +38378,30 @@ var render = function() {
                 _vm._s(_vm.month) +
                 "月\n                    "
             ),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.changeMonth(-1)
+                  }
+                }
+              },
+              [_vm._v("Back")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.changeMonth(1)
+                  }
+                }
+              },
+              [_vm._v("Next")]
+            ),
+            _vm._v(" "),
             _c(
               "table",
               { attrs: { border: "1" } },
@@ -38413,7 +38412,7 @@ var render = function() {
                     return _c("td", [
                       _vm.month == _vm.todaysMonth + 1 &&
                       oneday == _vm.todaysDate
-                        ? _c("a", { attrs: { href: "/", id: "today" } }, [
+                        ? _c("a", { attrs: { href: "/plan", id: "today" } }, [
                             _vm._v(
                               _vm._s(oneday) +
                                 "\n                                    "
@@ -38443,19 +38442,19 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
-                                  attrs: { type: "submit", value: "予定" }
+                                  attrs: { type: "submit", value: "追加" }
                                 })
                               ]
                             )
                           ])
                         : _vm.daylist.includes(oneday)
-                        ? _c("a", { attrs: { href: "/", id: "day" } }, [
+                        ? _c("a", { attrs: { href: "/plan", id: "day" } }, [
                             _vm._v(
                               _vm._s(oneday) +
                                 "\n                                "
                             )
                           ])
-                        : _c("a", { attrs: { href: "/" } }, [
+                        : _c("a", { attrs: { href: "/plan" } }, [
                             _vm._v(
                               _vm._s(oneday) +
                                 "\n                                "
@@ -38485,7 +38484,7 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
-                                  attrs: { type: "submit", value: "予定" }
+                                  attrs: { type: "submit", value: "追加" }
                                 })
                               ]
                             )
@@ -38496,30 +38495,6 @@ var render = function() {
                 )
               }),
               0
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.changeMonth(-1)
-                  }
-                }
-              },
-              [_vm._v("Back")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    return _vm.changeMonth(1)
-                  }
-                }
-              },
-              [_vm._v("Next")]
             )
           ])
         ])
@@ -50853,15 +50828,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*******************************************************!*\
   !*** ./resources/js/components/calendar/Calendar.vue ***!
   \*******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Calendar_vue_vue_type_template_id_dd802e58_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Calendar.vue?vue&type=template&id=dd802e58&scoped=true& */ "./resources/js/components/calendar/Calendar.vue?vue&type=template&id=dd802e58&scoped=true&");
 /* harmony import */ var _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Calendar.vue?vue&type=script&lang=js& */ "./resources/js/components/calendar/Calendar.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Calendar_vue_vue_type_style_index_0_id_dd802e58_lang_sass_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Calendar.vue?vue&type=style&index=0&id=dd802e58&lang=sass&scoped=true& */ "./resources/js/components/calendar/Calendar.vue?vue&type=style&index=0&id=dd802e58&lang=sass&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Calendar_vue_vue_type_style_index_0_id_dd802e58_lang_sass_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Calendar.vue?vue&type=style&index=0&id=dd802e58&lang=sass&scoped=true& */ "./resources/js/components/calendar/Calendar.vue?vue&type=style&index=0&id=dd802e58&lang=sass&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -50893,7 +50867,7 @@ component.options.__file = "resources/js/components/calendar/Calendar.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/calendar/Calendar.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
