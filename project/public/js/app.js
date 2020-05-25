@@ -2001,6 +2001,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -38378,7 +38392,7 @@ var render = function() {
               domProps: { value: _vm.userId }
             }),
             _vm._v(" "),
-            _c("input", { attrs: { type: "submit", value: "送信" } })
+            _c("input", { attrs: { type: "submit", value: "予定" } })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -38402,7 +38416,36 @@ var render = function() {
                         ? _c("a", { attrs: { href: "/", id: "today" } }, [
                             _vm._v(
                               _vm._s(oneday) +
-                                "\n                                "
+                                "\n                                    "
+                            ),
+                            _c(
+                              "form",
+                              { attrs: { action: "/send", method: "post" } },
+                              [
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "_token" },
+                                  domProps: { value: _vm.csrf }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "name" },
+                                  domProps: { value: _vm.userName }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "id" },
+                                  domProps: { value: _vm.userId }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "dateData" },
+                                  domProps: { value: oneday }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "submit", value: "予定" }
+                                })
+                              ]
                             )
                           ])
                         : _vm.daylist.includes(oneday)
@@ -38416,6 +38459,35 @@ var render = function() {
                             _vm._v(
                               _vm._s(oneday) +
                                 "\n                                "
+                            ),
+                            _c(
+                              "form",
+                              { attrs: { action: "/send", method: "post" } },
+                              [
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "_token" },
+                                  domProps: { value: _vm.csrf }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "name" },
+                                  domProps: { value: _vm.userName }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "id" },
+                                  domProps: { value: _vm.userId }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "hidden", name: "dateData" },
+                                  domProps: { value: oneday }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
+                                  attrs: { type: "submit", value: "予定" }
+                                })
+                              ]
                             )
                           ])
                     ])
