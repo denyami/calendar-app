@@ -4,18 +4,23 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Calendar</div>
-
                     <div class="card-body">
                         {{year}}年
                         {{month}}月
-                        {{date}}
-                        <button v-on:click="changeMonth(-1)">Back</button>
-                        <button v-on:click="changeMonth(1)">Next</button>
                         <table border="1">
-                            <tr v-for="oneweek in Month">
-                                <td v-for="oneday in oneweek">{{oneday}}</td>
+                            <tr v-for="oneweek in monthList">
+                                <td v-for="oneday in oneweek">
+                                    <a href="/" id="today" v-if="month==todaysMonth+1 && oneday==todaysDate">{{oneday}}
+                                    </a href="/">
+                                    <a href="/" id="day" v-else-if="daylist.includes(oneday)">{{oneday}}
+                                    </a href="/">
+                                    <a href="/" v-else>{{oneday}}
+                                    </a href="/">
+                                </td>
                             </tr>
                         </table>
+                        <button v-on:click="changeMonth(-1)">Back</button>
+                        <button v-on:click="changeMonth(1)">Next</button>
                     </div>
                 </div>
             </div>
@@ -23,26 +28,53 @@
     </div>
 </template>
 
+<style lang="sass" scoped>
+#today
+    color: blue
+    background-color: yellow
+
+#day
+    color: black
+</style>
+
 <script>
     var changeMonthCount = 0
     export default {
         el: '#calendar',
         data: function() {
             this.changeMonth(0)
+            this.getToday()
             return{
-                Month: this.changeMonth(0).monthList,
+                monthList: this.changeMonth(0).monthList,
                 year: this.changeMonth(0).year,
                 month: this.changeMonth(0).month,
                 date: this.changeMonth(0).date,
-                setMonthCount: this.changeMonth(0).setMonthCount
+                daylist:this.changeMonth(0).daylist,
+                setMonthCount: this.changeMonth(0).setMonthCount,
+                today:this.getToday().todaysYear,
+                todaysYear:this.getToday().todaysYear,
+                todaysMonth:this.getToday().todaysMonth,
+                todaysDate:this.getToday().todaysDate
             }
         },
         methods: {
+            getToday: function(){
+                var today = new Date()
+                var todaysYear = today.getFullYear()
+                var todaysMonth = today.getMonth()
+                var todaysDate = today.getDate()
+                return{
+                    today,
+                    todaysYear,
+                    todaysMonth,
+                    todaysDate
+                }
+            },
             changeMonth: function (valueChangeMonth) {
                 changeMonthCount += valueChangeMonth
                 var setMonthCount = changeMonthCount
                  {
-                    var date = new Date();
+                    var date = new Date()
                     date.setMonth(date.getMonth() + setMonthCount)
                     const year = date.getFullYear()
                     const month = date.getMonth()+1
@@ -87,6 +119,7 @@
                         year,
                         month,
                         date,
+                        daylist,
                         setMonthCount
                     }
                 }
