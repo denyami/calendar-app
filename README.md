@@ -1,6 +1,8 @@
 [http://exampleappdocker20200526.herokuapp.com/](http://exampleappdocker20200526.herokuapp.com/)
 
+E-Mail Address: sample@sample.com
 
+Password: samplepassword
 
 
 
