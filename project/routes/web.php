@@ -25,6 +25,7 @@ Route::get('/result','CalendarController@result');
 Route::post('/send','CalendarController@send');
 Route::post('/plan','PlansController@store');
 Route::post('/edit','PlansController@edit');
+Route::post('/destroy','PlansController@destroy');
 
 Route::resource('plans', 'PlansController');
 
