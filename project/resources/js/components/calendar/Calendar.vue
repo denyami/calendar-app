@@ -13,7 +13,7 @@
                         <table border="1">
                             <tr v-for="oneweek in monthList">
                                 <td v-for="oneday in oneweek">
-                                    <a href="/plan" id="today" v-if="month==todaysMonth+1 && oneday==todaysDate">{{oneday}}
+                                    <a href="/plan" id="today" v-if="year==todaysYear && month==todaysMonth+1 && oneday==todaysDate">{{oneday}}
                                         <form action="/send" method="post">
                                             <input type="hidden" name="_token" :value="csrf">
                                             <input type="hidden" name="name" :value="userName">

@@ -38410,6 +38410,7 @@ var render = function() {
                   "tr",
                   _vm._l(oneweek, function(oneday) {
                     return _c("td", [
+                      _vm.year == _vm.todaysYear &&
                       _vm.month == _vm.todaysMonth + 1 &&
                       oneday == _vm.todaysDate
                         ? _c("a", { attrs: { href: "/plan", id: "today" } }, [
