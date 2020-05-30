@@ -38,13 +38,13 @@ class PlansController extends Controller
     public function store(Request $request)
     {
 
-      $plan = new Plan;
-      $plan->id = $request->id;
-      $plan->u_id = $request->u_id;
-      $plan->date = $request->date;
-      $plan->todo = $request->todo;
-      $plan->save();
-      return redirect('/plan');
+        $plan = new Plan;
+        $plan->id = $request->id;
+        $plan->u_id = $request->u_id;
+        $plan->date = $request->date;
+        $plan->todo = $request->todo;
+        $plan->save();
+        return redirect('/plan');
     }
 
     /**
@@ -64,9 +64,13 @@ class PlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $plan = Plan::find($request->id);
+        $plan->todo = $request->todo;
+        $plan->save();
+        $plans = Plan::all();
+        return view('plan',compact('plans'));
     }
 
     /**
