@@ -7,6 +7,7 @@
                         {{userName}}さんのカレンダー
                         <a href="/plan"><button>予定</button></a>
                     <div class="card-body">
+                        {{String(isNaN('s'))}}
                         {{year}}年
                         {{month}}月
                         <button v-on:click="changeMonth(-1)">Back</button>
@@ -25,7 +26,7 @@
                                             <input type="submit" value="追加">
                                         </form>
                                     </a">
-                                    <a href="/plan" id="day" v-else-if="daylist.includes(oneday)">{{oneday}}
+                                    <a href="/plan" id="day" v-else-if="daylist.includes(oneday) || isNaN(oneday)">{{oneday}}
                                     </a>
                                     <div v-else>{{oneday}}
                                     <form action="/send" method="post">
