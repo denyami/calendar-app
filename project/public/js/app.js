@@ -38515,9 +38515,7 @@ var render = function() {
                                   domProps: {
                                     value:
                                       String(_vm.year) +
-                                      "-" +
                                       String(_vm.month) +
-                                      "-" +
                                       String(oneday)
                                   }
                                 }),
