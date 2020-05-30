@@ -33,7 +33,7 @@
                                         <input type="hidden" name="name" :value="userName">
                                         <input type="hidden" name="id" :value="String(year)+String(month)+String(oneday)">
                                         <input type="hidden" name="u_id" :value="String(userId)">
-                                        <input type="hidden" name="dateData" :value="String(year)+'-'+String(month)+'-'+String(oneday)">
+                                        <input type="hidden" name="dateData" :value="String(year)+String(month)+String(oneday)">
                                         <input type="submit" value="追加">
                                     </form>
                                     </div>
