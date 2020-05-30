@@ -20,11 +20,11 @@ Route::get('/', function () {
 Route::get('/calendar','CalendarController@index');
 Route::get('/create','PlansController@create');
 Route::get('/plan','PlansController@index');
-
-Route::post('/plan','PlansController@store');
+Route::get('/result','CalendarController@result');
 
 Route::post('/send','CalendarController@send');
-Route::get('/result','CalendarController@result');
+Route::post('/plan','PlansController@store');
+Route::post('/edit','PlansController@edit');
 
 Route::resource('plans', 'PlansController');
 
