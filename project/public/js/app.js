@@ -2013,6 +2013,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -38379,6 +38380,8 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _vm._v(
               "\n                    " +
+                _vm._s(String(isNaN("s"))) +
+                "\n                    " +
                 _vm._s(_vm.year) +
                 "年\n                    " +
                 _vm._s(_vm.month) +
@@ -38469,7 +38472,7 @@ var render = function() {
                               ]
                             )
                           ])
-                        : _vm.daylist.includes(oneday)
+                        : _vm.daylist.includes(oneday) || isNaN(oneday)
                         ? _c("a", { attrs: { href: "/plan", id: "day" } }, [
                             _vm._v(
                               _vm._s(oneday) +
