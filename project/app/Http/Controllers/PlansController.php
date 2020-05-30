@@ -15,8 +15,8 @@ class PlansController extends Controller
      */
     public function index()
     {
-         $plan = Plan::find(1);
-         return view('plan',compact('plan'));
+         $plans = Plan::all();
+         return view('plan',compact('plans'));
     }
 
     /**

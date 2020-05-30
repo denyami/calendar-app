@@ -5,6 +5,7 @@
                 <div class="card">
                     <div class="card-header">Calendar</div>
                         {{userName}}さんのカレンダー
+                        <a href="/plan"><button>予定</button></a>
                     <div class="card-body">
                         {{year}}年
                         {{month}}月
@@ -17,22 +18,22 @@
                                         <form action="/send" method="post">
                                             <input type="hidden" name="_token" :value="csrf">
                                             <input type="hidden" name="name" :value="userName">
-                                            <input type="hidden" name="id" :value="userId">
+                                            <input type="hidden" name="id" :value="String(userId)+String(year)+String(month)+String(oneday)">
                                             <input type="hidden" name="dateData" :value="oneday">
                                             <input type="submit" value="追加">
                                         </form>
                                     </a">
                                     <a href="/plan" id="day" v-else-if="daylist.includes(oneday)">{{oneday}}
                                     </a>
-                                    <a href="/plan" v-else>{{oneday}}
+                                    <div v-else>{{oneday}}
                                     <form action="/send" method="post">
                                         <input type="hidden" name="_token" :value="csrf">
                                         <input type="hidden" name="name" :value="userName">
-                                        <input type="hidden" name="id" :value="userId">
+                                        <input type="hidden" name="id" :value="String(userId)+String(year)+String(month)+String(oneday)">
                                         <input type="hidden" name="dateData" :value="oneday">
                                         <input type="submit" value="追加">
                                     </form>
-                                    </a">
+                                    </div>
                                 </td>
                             </tr>
                         </table>
