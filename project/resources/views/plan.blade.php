@@ -14,17 +14,23 @@
                             <span>{{$plan->date}}</span>
                             <span>{{$plan->todo}}</span>
                         </div>
-                        <form action="/edit" method="post">
-                          {{ csrf_field() }}
-                            <div>
-                                <input type="hidden" name="id":value="{{$plan->id}}">
-                                <input type="text" name="todo" placeholder="予定を入れる">
-                                <input type="submit" value="編集">
-                            </div>
-                            <div>
-                                {{ $tmp ?? '' }}
-                            </div>
-                        </form>
+
+                        <div style="display:inline-flex">
+                            <form action="/edit" method="post">
+                              {{ csrf_field() }}
+                                    <input type="hidden" name="id":value="{{$plan->id}}">
+                                    <input type="text" name="todo" placeholder="予定を入れる">
+                                    <input type="submit" value="編集">
+                            </form>
+                        </div>
+
+                        <div style="display:inline-flex">
+                            <form action="/destroy" method="post">
+                              {{ csrf_field() }}
+                                    <input type="hidden" name="id":value="{{$plan->id}}">
+                                    <input type="submit" value="削除">
+                            </form>
+                        </div>
              
              
                     @endforeach

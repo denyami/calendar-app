@@ -91,8 +91,11 @@ class PlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $plan = Plan::find($request->id);
+        $plan->delete();
+        $plans = Plan::all();
+        return view('plan',compact('plans'));
     }
 }
