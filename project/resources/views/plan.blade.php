@@ -6,6 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
+                <button type=“button” onclick="location.href='/calendar'">カレンダーに戻る</button>
                 <div class="card-body">
                     @foreach($plans as $plan)
                        <!--<h4>{{$plan->id}}</h4>-->
