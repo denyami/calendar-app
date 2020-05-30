@@ -7,8 +7,12 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
-                   <h4>{{$plan->id}}</h4>
-                   <h4>{{$plan->todo}}</h4>
+                    @foreach($plans as $plan)
+                       <!--<h4>{{$plan->id}}</h4>-->
+                       <h4>{{$plan->todo}}</h4>
+             
+             
+                    @endforeach
                 </div>
             </div>
         </div>
