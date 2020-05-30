@@ -40,6 +40,7 @@ class PlansController extends Controller
 
       $plan = new Plan;
       $plan->id = $request->id;
+      $plan->u_id = $request->u_id;
       $plan->date = $request->date;
       $plan->todo = $request->todo;
       $plan->save();

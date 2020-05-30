@@ -11,6 +11,7 @@
                         {{month}}月
                         <button v-on:click="changeMonth(-1)">Back</button>
                         <button v-on:click="changeMonth(1)">Next</button>
+                                    
                         <table border="1">
                             <tr v-for="oneweek in monthList">
                                 <td v-for="oneday in oneweek">
@@ -18,8 +19,9 @@
                                         <form action="/send" method="post">
                                             <input type="hidden" name="_token" :value="csrf">
                                             <input type="hidden" name="name" :value="userName">
-                                            <input type="hidden" name="id" :value="String(userId)+String(year)+String(month)+String(oneday)">
-                                            <input type="hidden" name="dateData" :value="oneday">
+                                            <input type="hidden" name="id" :value="String(year)+String(month)+String(oneday)">
+                                            <input type="hidden" name="u_id" :value="String(userId)">
+                                            <input type="hidden" name="dateData" :value="String(year)+String(month)+String(oneday)">
                                             <input type="submit" value="追加">
                                         </form>
                                     </a">
@@ -29,8 +31,9 @@
                                     <form action="/send" method="post">
                                         <input type="hidden" name="_token" :value="csrf">
                                         <input type="hidden" name="name" :value="userName">
-                                        <input type="hidden" name="id" :value="String(userId)+String(year)+String(month)+String(oneday)">
-                                        <input type="hidden" name="dateData" :value="oneday">
+                                        <input type="hidden" name="id" :value="String(year)+String(month)+String(oneday)">
+                                        <input type="hidden" name="u_id" :value="String(userId)">
+                                        <input type="hidden" name="dateData" :value="String(year)+'-'+String(month)+'-'+String(oneday)">
                                         <input type="submit" value="追加">
                                     </form>
                                     </div>
