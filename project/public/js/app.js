@@ -2010,6 +2010,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
 var changeMonthCount = 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -38439,7 +38442,6 @@ var render = function() {
                                   attrs: { type: "hidden", name: "id" },
                                   domProps: {
                                     value:
-                                      String(_vm.userId) +
                                       String(_vm.year) +
                                       String(_vm.month) +
                                       String(oneday)
@@ -38447,8 +38449,18 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
+                                  attrs: { type: "hidden", name: "u_id" },
+                                  domProps: { value: String(_vm.userId) }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
                                   attrs: { type: "hidden", name: "dateData" },
-                                  domProps: { value: oneday }
+                                  domProps: {
+                                    value:
+                                      String(_vm.year) +
+                                      String(_vm.month) +
+                                      String(oneday)
+                                  }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
@@ -38487,7 +38499,6 @@ var render = function() {
                                   attrs: { type: "hidden", name: "id" },
                                   domProps: {
                                     value:
-                                      String(_vm.userId) +
                                       String(_vm.year) +
                                       String(_vm.month) +
                                       String(oneday)
@@ -38495,8 +38506,20 @@ var render = function() {
                                 }),
                                 _vm._v(" "),
                                 _c("input", {
+                                  attrs: { type: "hidden", name: "u_id" },
+                                  domProps: { value: String(_vm.userId) }
+                                }),
+                                _vm._v(" "),
+                                _c("input", {
                                   attrs: { type: "hidden", name: "dateData" },
-                                  domProps: { value: oneday }
+                                  domProps: {
+                                    value:
+                                      String(_vm.year) +
+                                      "-" +
+                                      String(_vm.month) +
+                                      "-" +
+                                      String(oneday)
+                                  }
                                 }),
                                 _vm._v(" "),
                                 _c("input", {

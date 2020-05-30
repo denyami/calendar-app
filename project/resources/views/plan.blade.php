@@ -9,7 +9,10 @@
                 <div class="card-body">
                     @foreach($plans as $plan)
                        <!--<h4>{{$plan->id}}</h4>-->
-                       <h4>{{$plan->todo}}</h4>
+                       <div>
+                           <span>{{$plan->date}}</span>
+                           <span>{{$plan->todo}}</span>
+                       </div>
              
              
                     @endforeach

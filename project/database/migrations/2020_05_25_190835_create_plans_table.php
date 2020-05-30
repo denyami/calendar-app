@@ -15,6 +15,7 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string('u_id');
             $table->string('date');
             $table->string('todo');
             $table->timestamps();
